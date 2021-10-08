@@ -15,12 +15,12 @@ public class Player : MonoBehaviour
     private float _jumpHeight = 15.0f;
     private float _yVelocity;
     private bool _doubleJump;
-    private int _coins;
+    [SerializeField]
+    private int _coins = 0;
     private UIManager _uIManager;
     [SerializeField]
     private int _lives = 3;
-    [SerializeField]
-    private Transform _respawnPoint;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +33,7 @@ public class Player : MonoBehaviour
         }
 
         _uIManager.UpdateLivesDisplay(_lives);
+        _uIManager.UpdateCoinDisplay(_coins);
     }
 
     // Update is called once per frame
