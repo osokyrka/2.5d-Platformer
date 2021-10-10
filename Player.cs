@@ -20,6 +20,10 @@ public class Player : MonoBehaviour
     private UIManager _uIManager;
     [SerializeField]
     private int _lives = 3;
+    [SerializeField]
+    private ParticleSystem _jumpParticle = null;
+    [SerializeField]
+    private GameObject _respawnPrefab;
     
     // Start is called before the first frame update
     void Start()
@@ -45,7 +49,8 @@ public class Player : MonoBehaviour
     private void CalculateMovement()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
-        Vector3 direction = new Vector3(horizontalInput, 0, 0);
+        float verticalnput = Input.GetAxis("Vertical");
+        Vector3 direction = new Vector3(horizontalInput, 0, verticalnput);
         Vector3 velocity = direction * _speed;
         if(_controller.isGrounded == true)
         {
@@ -53,6 +58,7 @@ public class Player : MonoBehaviour
             {
                 _yVelocity = _jumpHeight;
                 _doubleJump = true;
+                _jumpParticle.Play();
             }
         }
         else
@@ -64,6 +70,7 @@ public class Player : MonoBehaviour
                 {
                     _yVelocity = _jumpHeight;
                     _doubleJump = false;
+                    _jumpParticle.Play();
                 }
             }
         }

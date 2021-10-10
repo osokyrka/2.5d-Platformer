@@ -6,6 +6,8 @@ public class DeadZone : MonoBehaviour
 {
     [SerializeField]
     private GameObject _respawnPoint;
+    [SerializeField]
+    private GameObject _respawnPrefab;
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
@@ -22,6 +24,8 @@ public class DeadZone : MonoBehaviour
             }
             other.transform.position = _respawnPoint.transform.position;
             StartCoroutine(CCEnableRoutine(cc));
+            GameObject respawnPrefab = Instantiate(_respawnPrefab, other.transform.position, Quaternion.identity);
+            Destroy(respawnPrefab, 1f);
         }
     }
 

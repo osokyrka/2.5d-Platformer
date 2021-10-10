@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour
     private Text _coinText, _livesText;
    public void UpdateCoinDisplay(int coins)
     {
-        _coinText.text = "Coins: " + coins;
+        _coinText.text = "Orbs: " + coins;
     }
     public void UpdateLivesDisplay(int lives)
     {

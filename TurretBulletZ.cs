@@ -8,11 +8,11 @@ public class TurretBulletZ : MonoBehaviour
     private float _speed = 3.0f, _force = 10f;
     [SerializeField]
     private float _destroyPosZ = -20f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private GameObject _explosionPrefab;
+    [SerializeField]
+    private Vector3 _offsetParticle = new Vector3(0, 0, 1);
+ 
 
     // Update is called once per frame
     void FixedUpdate()
@@ -35,6 +35,9 @@ public class TurretBulletZ : MonoBehaviour
             Player player = other.gameObject.GetComponent<Player>();
             player.Damage();
             Destroy(this.gameObject);
+            GameObject explosionPrefab = Instantiate(_explosionPrefab, other.transform.position + _offsetParticle, Quaternion.identity);
+            Destroy(explosionPrefab, 1f);
         }
     }
+    
 }

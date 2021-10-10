@@ -9,6 +9,7 @@ public class Camera : MonoBehaviour
     private Player _player;
     [SerializeField]
     private float _smooth = 5f;
+    private Vector3 _camPos;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,15 +30,28 @@ public class Camera : MonoBehaviour
             Quaternion target = Quaternion.Euler(30, 0, 0);
             transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * _smooth);
         }
-        if(_player.transform.position.x > 120)
+        else if(_player.transform.position.x > 120 && _player.transform.position.x < 250)
         {
             Quaternion target = Quaternion.Euler(30, 20, 20);
             transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * _smooth);
         }
-        if(_player.transform.position.x > 250)
+        else if(_player.transform.position.x > 250 && transform.position.x < 290)
         {
-            Quaternion target = Quaternion.Euler(30, -50, 20);
+            Quaternion target = Quaternion.Euler(30, 0, 20);
             transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * _smooth);
         }
+        else if (_player.transform.position.x > 290 && transform.position.x < 350)
+        {
+            Quaternion target = Quaternion.Euler(30, 0, 10);
+            transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * _smooth);
+        }
+        else if (_player.transform.position.x > 350)
+        {
+            
+            Quaternion target = Quaternion.Euler(20, 0, 0);
+            //transform.position = new Vector3(0, 30, 0);
+            transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * _smooth);
+        }
+        
     }
 }
