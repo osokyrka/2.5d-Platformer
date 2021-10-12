@@ -1,2 +1,2 @@
 # 2.5d-Platformer
-simple prototype for a 2d platformer
+simple prototype for a 3d platformer
