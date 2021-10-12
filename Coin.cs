@@ -8,6 +8,7 @@ public class Coin : MonoBehaviour
     private ParticleSystem _coinExplosion = null;
     [SerializeField]
     private GameObject _particlePrefab;
+
     
 
     private void OnTriggerEnter(Collider other)
@@ -22,6 +23,7 @@ public class Coin : MonoBehaviour
                 GameObject explosionPrefab = Instantiate(_particlePrefab, other.transform.position, Quaternion.identity);
                 Destroy(gameObject);
                 Destroy(explosionPrefab, 0.5f);
+
             }
         }
     }

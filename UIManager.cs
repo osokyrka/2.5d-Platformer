@@ -6,13 +6,21 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField]
-    private Text _coinText, _livesText;
-   public void UpdateCoinDisplay(int coins)
+    private Text _coinText, _livesText, _levelComplete;
+    private void Start()
     {
-        _coinText.text = "Orbs: " + coins;
+        _levelComplete.gameObject.SetActive(false);
+    }
+    public void UpdateCoinDisplay(int coins)
+    {
+        _coinText.text = "ORBS: " + coins;
     }
     public void UpdateLivesDisplay(int lives)
     {
-        _livesText.text = "Lives: " + lives;
+        _livesText.text = "LIVES: " + lives;
+    }
+    public void UpdateLevel()
+    {
+        _levelComplete.gameObject.SetActive(true);
     }
 }

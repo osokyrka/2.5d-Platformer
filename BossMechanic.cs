@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossMechanic : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class BossMechanic : MonoBehaviour
     private Boss _boss;
     [SerializeField]
     private Collider _collider;
+    [SerializeField]
+    private AudioSource _audio;
+    
     // Start is called before the first frame update
     private void Start()
     {
@@ -33,6 +37,7 @@ public class BossMechanic : MonoBehaviour
             _anim.SetTrigger("ButtonPress");
             _buttonActive = true;
             _collider.enabled = false;
+            _audio.Play();
         }
     }
 }

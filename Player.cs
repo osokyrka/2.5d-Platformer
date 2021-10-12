@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
     private ParticleSystem _jumpParticle = null;
     [SerializeField]
     private GameObject _respawnPrefab;
+    [SerializeField]
+    private AudioSource _audio;
     
     // Start is called before the first frame update
     void Start()
@@ -59,6 +61,7 @@ public class Player : MonoBehaviour
                 _yVelocity = _jumpHeight;
                 _doubleJump = true;
                 _jumpParticle.Play();
+                _audio.Play();
             }
         }
         else
@@ -71,6 +74,7 @@ public class Player : MonoBehaviour
                     _yVelocity = _jumpHeight;
                     _doubleJump = false;
                     _jumpParticle.Play();
+                    _audio.Play();
                 }
             }
         }

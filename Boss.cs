@@ -8,10 +8,11 @@ public class Boss : MonoBehaviour
     private int _health = 4;
     [SerializeField]
     private GameObject _explosionPrefab = null;
+    private UIManager _uiManager;
     // Start is called before the first frame update
     void Start()
     {
-        
+        _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
     }
 
     // Update is called once per frame
@@ -27,6 +28,9 @@ public class Boss : MonoBehaviour
             GameObject explosionPrefab = Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
             Destroy(gameObject);
             Destroy(explosionPrefab, 1f);
+            _uiManager.UpdateLevel();
+            CharacterController player = GameObject.Find("Player").GetComponent<CharacterController>();
+            player.enabled = false;
         }
     }
 
