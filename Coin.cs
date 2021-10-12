@@ -23,7 +23,6 @@ public class Coin : MonoBehaviour
                 GameObject explosionPrefab = Instantiate(_particlePrefab, other.transform.position, Quaternion.identity);
                 Destroy(gameObject);
                 Destroy(explosionPrefab, 0.5f);
-
             }
         }
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Turret : MonoBehaviour
 {
     [SerializeField]
-    private GameObject _turretBullet, _muzzlePrefab;
+    private GameObject _turretBullet;
     [SerializeField]
     private float _canFire = -10.0f, _fireRate = 3.0f;
     [SerializeField]
@@ -29,8 +29,6 @@ public class Turret : MonoBehaviour
         {
             _canFire = Time.time + _fireRate;
             Instantiate(_turretBullet, transform.position, Quaternion.identity);
-            GameObject muzzlePrefab = Instantiate(_muzzlePrefab, transform.position,Quaternion.identity);
-            Destroy(muzzlePrefab, 0.5f);
         }
         else if(Time.time > _canFire && _isBoss)
         {
@@ -38,9 +36,8 @@ public class Turret : MonoBehaviour
             if(distanceToTarget < _distanceToTarget)
             {
                 _canFire = Time.time + _fireRate / _bossFireRate;
-                Instantiate(_turretBullet, transform.position, Quaternion.identity);
-                GameObject muzzlePrefab = Instantiate(_muzzlePrefab, transform.position, Quaternion.identity);
-                Destroy(muzzlePrefab, 0.5f);
+                GameObject missile = Instantiate(_turretBullet, transform.position, Quaternion.identity);
+                Destroy(missile, 3f);
             }
 
         }

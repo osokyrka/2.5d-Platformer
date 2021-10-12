@@ -23,6 +23,7 @@ public class Misile : MonoBehaviour
     void Update()
     {
         MissileMovement();
+        StartCoroutine(MissileExplosion());
     }
 
     private void MissileMovement()
@@ -49,8 +50,13 @@ public class Misile : MonoBehaviour
             player.Damage();
             Destroy(gameObject);
             GameObject explosionPrefab = Instantiate(_particlePrefab, other.transform.position, Quaternion.identity);
-            Destroy(explosionPrefab.gameObject, 1f);
-            
+            Destroy(explosionPrefab.gameObject, 1f);  
         }
+    }
+    IEnumerator MissileExplosion()
+    {
+        yield return new WaitForSeconds(2.98f);
+        GameObject explosionPrfab = Instantiate(_particlePrefab, transform.position, Quaternion.identity);
+        Destroy(explosionPrfab, 1f);
     }
 }

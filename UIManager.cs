@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField]
-    private Text _coinText, _livesText, _levelComplete;
+    private Text _coinText, _livesText, _levelComplete, _timer;
     private void Start()
     {
         _levelComplete.gameObject.SetActive(false);
@@ -22,5 +22,9 @@ public class UIManager : MonoBehaviour
     public void UpdateLevel()
     {
         _levelComplete.gameObject.SetActive(true);
+    }
+    public void UpdateTimer(float time)
+    {
+        _timer.text = "TIME: " + time;
     }
 }
